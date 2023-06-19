@@ -40,7 +40,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $posts)
+    public function show(Post $post)
     {
       return view('posts.show', compact('post'));
     }
@@ -48,7 +48,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $posts)
+    public function edit(Post $post)
     {
       return view('posts.edit', compact('post'));
     }
@@ -56,7 +56,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $posts)
+    public function update(Request $request, Post $post)
     {
       $post->title = $request->title;
       $post->body = $request->body;
