@@ -11,13 +11,13 @@
         <label for="title" class="block text-gray-600 mb-1">
           Title
         </label>
-        <input type="text" id="title" name="title" class="w-full border border-gray-200 px-3 py-2 rounded">
+        <input type="text" id="title" name="title" class="w-full border border-gray-200 px-3 py-2 rounded" required>
       </div>
       <div class="mb-4">
         <label for="body" class="block text-gray-600 mb-1">
           Body
         </label>
-        <input type="text" id="body" name="body" class="w-full border border-gray-200 px-3 py-2 rounded">
+        <input type="text" id="body" name="body" class="w-full border border-gray-200 px-3 py-2 rounded" required>
       </div>
       <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg">
         Create

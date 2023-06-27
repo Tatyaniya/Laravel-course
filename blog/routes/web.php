@@ -27,18 +27,55 @@ Route::get('/welcome', function() {
 });
 
 Route::get('/welcome/{name}', function($name) {
-  return "Welcome, $name!";
-  return 'Welcome, guest';
+  return $name ? "Welcome, $name!" : 'Welcome, guest';
 });
 
 Route::get('/welcome/{name}/{age}', function($name, $age) {
+  if (!is_numeric($age)) {
+    abort(400, 'Invalid age provided');
+  }
+
   return "Welcome, $name. You are $age years old.";
 });
 
+Route::get('/year/{year}', function($year) {
+  $currentYear = date('Y');
+
+  if ($year == $currentYear) {
+    return "Yes, this is the current year";
+  } else {
+    return "No, this is not the current year";
+  }
+});
+
 Route::get('age/{age}', function($age){
-  ddd($age);
   return "You $age";
 })->whereNumber('age');
+
+Route::get('/find', function() {
+  $query = request()->query('q');
+  if (!$query) {
+    return "Please enter a search query";
+  }
+
+  return "You are searching for $query";
+});
+
+Route::get('/page', function() {
+  return response("<h1>This is a page</h1>", 200);
+});
+
+Route::get('/missing', function() {
+  return response("<h1>This page is not found</h1>", 404);
+});
+
+Route::get('/public', function() {
+  return response("<h1>Public Page</h1>", 200)
+    ->header("Cache-Control", "no-cache, no-store, must-revalidate");
+});
+
+
+
 
 Route::get('/search', function() {
   $q = request()->query('q');
